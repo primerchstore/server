@@ -1,0 +1,15 @@
+export type Schema =
+  | "product"
+  | "category"
+  | "tag"
+  | "order"
+  | "variant"
+  | "user"
+  | "media"
+  | "size"
+  | "colour"
+  | "review"
+  | "address"
+  | "cart"
+  | "wishlist"
+  | "promo";
