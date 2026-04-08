@@ -267,6 +267,15 @@ exports.Prisma.VariantMediaScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CategoryMediaScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  mediaId: 'mediaId',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
@@ -452,6 +461,7 @@ exports.Prisma.ModelName = {
   Media: 'Media',
   ProductMedia: 'ProductMedia',
   VariantMedia: 'VariantMedia',
+  CategoryMedia: 'CategoryMedia',
   Review: 'Review',
   Address: 'Address',
   Cart: 'Cart',
