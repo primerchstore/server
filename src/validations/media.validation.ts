@@ -9,4 +9,7 @@ export class MediaValidation {
     sort: z.enum(Sort.MEDIA.items).default(Sort.MEDIA.default),
     order: z.enum(order.items).default(order.default),
   });
+  static DELETE = z.object({
+    id: z.string()
+  })
 }

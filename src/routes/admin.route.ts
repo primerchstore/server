@@ -6,8 +6,8 @@ import { MediaController } from "../controllers/media.controller.js";
 const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
 
-// Media
 adminRoutes.get("/medias/query", MediaController.QUERY);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);
+adminRoutes.delete("/medias/:mediaId", MediaController.DELETE);
 
 export default adminRoutes;

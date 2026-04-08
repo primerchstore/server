@@ -11,4 +11,8 @@ export class SuccessResponse {
     const { message, status, success } = SuccessResponseApi.POST(schema);
     return { message, statusCode: status, success, result };
   };
+  static DELETE = (schema: Schema, result: any): ApiResponse => {
+    const { message, status, success } = SuccessResponseApi.DELETE(schema);
+    return { message, statusCode: status, success, result };
+  };
 }

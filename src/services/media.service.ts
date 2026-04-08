@@ -1,4 +1,5 @@
 import { uploadToCloudinary } from "../helpers/cloudinary/upload.helper.js";
+import { mediaDelete } from "../helpers/delete/media.delete.js";
 import { mediaPost } from "../helpers/post/media.post.helper.js";
 import { mediaQuery } from "../helpers/query/media.query.js";
 import {
@@ -6,6 +7,8 @@ import {
   ResponseError,
 } from "../helpers/responses/error.response.js";
 import {
+  MediaDeleteResponseType,
+  MediaDeleteValidationType,
   MediaPostResponseType,
   MediaQueryResponseType,
   MediaQueryValidationType,
@@ -24,8 +27,13 @@ export class MediaService {
       throw new ResponseError(
         ErrorResponseMessage.BAD_REQUEST("no file provided"),
       );
-
     const upload = await uploadToCloudinary(file.buffer);
     return mediaPost(upload);
+  };
+
+  static DELETE = async (
+    id: MediaDeleteValidationType,
+  ): Promise<MediaDeleteResponseType> => {
+    return mediaDelete(id);
   };
 }

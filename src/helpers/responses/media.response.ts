@@ -28,3 +28,7 @@ export const MediaGetResponse = {
     },
   },
 } as const satisfies Prisma.MediaSelect;
+
+export const MediaDeleteResponse = {
+  id: true,
+} as const satisfies Prisma.MediaSelect;
