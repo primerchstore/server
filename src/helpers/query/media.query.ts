@@ -37,7 +37,7 @@ export const mediaQuery = async (
       query: items,
       pagination: {
         page,
-        limit: take,
+        take,
         totalItems,
         totalFilters,
         totalPages,

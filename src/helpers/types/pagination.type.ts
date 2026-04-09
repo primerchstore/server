@@ -1,6 +1,6 @@
 export type Pagination = {
   page: number;
-  limit: number;
+  take: number;
   totalItems: number;
   totalFilters: number;
   totalPages: number;
