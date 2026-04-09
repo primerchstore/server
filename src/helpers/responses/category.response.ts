@@ -49,6 +49,16 @@ export const CategoryGetResponse = {
       description: true,
     },
   },
+  medias: {
+    select: {
+      media: {
+        select: {
+          id: true,
+          url: true,
+        },
+      },
+    },
+  },
   _count: {
     select: {
       products: true,
