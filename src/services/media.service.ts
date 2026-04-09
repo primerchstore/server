@@ -1,6 +1,6 @@
 import { uploadToCloudinary } from "../helpers/cloudinary/upload.helper.js";
 import { mediaDelete } from "../helpers/delete/media.delete.js";
-import { mediaPost } from "../helpers/post/media.post.helper.js";
+import { mediaPost } from "../helpers/post/media.post.js";
 import { mediaQuery } from "../helpers/query/media.query.js";
 import {
   ErrorResponseMessage,

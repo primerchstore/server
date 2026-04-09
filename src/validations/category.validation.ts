@@ -10,6 +10,12 @@ export class CategoryValidation {
     take: z.coerce.number().int().min(1).default(10),
     sort: z.enum(Sort.CATEGORY.items).default(Sort.CATEGORY.default),
   });
+
+  static GET = z.object({
+    by: z.enum(["id", "slug"]),
+    value: z.string(),
+  });
+
   static POST = z.object({
     name: z.string().min(1).max(50),
     description: z
