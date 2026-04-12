@@ -8,6 +8,7 @@ const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
 
 adminRoutes.post("/categories", CategoryController.POST);
+adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);
 
 adminRoutes.get("/medias/query", MediaController.QUERY);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);

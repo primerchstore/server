@@ -47,9 +47,7 @@ export class CategoryValidation {
       .string()
       .optional()
       .transform((val) => (val === "" ? undefined : val)),
-    mediaId: z
-      .string()
-      .optional()
-      .transform((val) => (val === "" ? undefined : val)),
+    deletedMedias: z.array(z.string()).optional(),
+    addedMedias: z.array(z.string()).optional(),
   });
 }

@@ -2,6 +2,7 @@ import { NextFunction, Response, Request } from "express";
 import { UserRequest } from "../helpers/types/user.type.js";
 import {
   CategoryGetResponseType,
+  CategoryPatchResponseType,
   CategoryPostResponseType,
   CategoryQueryResponseType,
 } from "../helpers/types/category.type.js";
@@ -46,6 +47,24 @@ export class CategoryController {
       const response = SuccessResponse.POST("category", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
+      next(error);
+    }
+  };
+  static PATCH = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const { categoryId } = req.params;
+      const result: CategoryPatchResponseType = await CategoryService.PATCH(
+        categoryId as string,
+        req.body,
+      );
+      const response = SuccessResponse.PATCH("category", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      console.log({ error });
       next(error);
     }
   };

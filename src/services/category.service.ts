@@ -1,9 +1,12 @@
 import { categoryGet } from "../helpers/get/category.get.js";
+import { categoryPatch } from "../helpers/patch/category.patch.js";
 import { categoryPost } from "../helpers/post/category.post.js";
 import { categoryQuery } from "../helpers/query/category.query.js";
 import {
   CategoryGetResponseType,
   CategoryGetValidationType,
+  CategoryPatchResponseType,
+  CategoryPatchValidationType,
   CategoryPostResponseType,
   CategoryPostValidationType,
   CategoryQueryResponseType,
@@ -27,5 +30,12 @@ export class CategoryService {
     data: CategoryPostValidationType,
   ): Promise<CategoryPostResponseType> => {
     return categoryPost(data);
+  };
+
+  static PATCH = async (
+    id: string,
+    data: CategoryPatchValidationType,
+  ): Promise<CategoryPatchResponseType> => {
+    return categoryPatch(id, data);
   };
 }

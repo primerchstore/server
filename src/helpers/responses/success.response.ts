@@ -15,4 +15,8 @@ export class SuccessResponse {
     const { message, status, success } = SuccessResponseApi.DELETE(schema);
     return { message, statusCode: status, success, result };
   };
+  static PATCH = (schema: Schema, result: any): ApiResponse => {
+    const { message, status, success } = SuccessResponseApi.PATCH(schema);
+    return { message, statusCode: status, success, result };
+  };
 }
