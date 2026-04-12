@@ -3,6 +3,7 @@ import { CategoryValidation } from "../../validations/category.validation.js";
 import { Prisma } from "../../generated/prisma/client.js";
 import {
   CategoryGetResponse,
+  CategoryPatchResponse,
   CategoryPostResponse,
   CategoryQueryResponse,
 } from "../responses/category.response.js";
@@ -16,6 +17,9 @@ export type CategoryGetValidationType = z.infer<typeof CategoryValidation.GET>;
 export type CategoryPostValidationType = z.infer<
   typeof CategoryValidation.POST
 >;
+export type CategoryPatchValidationType = z.infer<
+  typeof CategoryValidation.PATCH
+>;
 
 export type CategoryGetResponseType = Prisma.CategoryGetPayload<{
   select: typeof CategoryGetResponse;
@@ -27,4 +31,8 @@ export type CategoryQueryResponseType = {
 
 export type CategoryPostResponseType = Prisma.CategoryGetPayload<{
   select: typeof CategoryPostResponse;
+}>;
+
+export type CategoryPatchResponseType = Prisma.CategoryGetPayload<{
+  select: typeof CategoryPatchResponse;
 }>;

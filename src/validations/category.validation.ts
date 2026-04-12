@@ -28,4 +28,28 @@ export class CategoryValidation {
     parentId: z.string().optional(),
     mediaId: z.string().optional(),
   });
+
+  static PATCH = z.object({
+    name: z
+      .string()
+      .min(1)
+      .max(50)
+      .optional()
+      .transform((val) => (val === "" ? undefined : val)),
+    description: z
+      .string()
+      .min(3)
+      .max(200)
+      .optional()
+      .nullable()
+      .transform((val) => (val === "" ? undefined : val)),
+    parentId: z
+      .string()
+      .optional()
+      .transform((val) => (val === "" ? undefined : val)),
+    mediaId: z
+      .string()
+      .optional()
+      .transform((val) => (val === "" ? undefined : val)),
+  });
 }
