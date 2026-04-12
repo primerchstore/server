@@ -1,6 +1,7 @@
 import { NextFunction, Response, Request } from "express";
 import { UserRequest } from "../helpers/types/user.type.js";
 import {
+  CategoryDeleteResponseType,
   CategoryGetResponseType,
   CategoryPatchResponseType,
   CategoryPostResponseType,
@@ -39,7 +40,11 @@ export class CategoryController {
       next(error);
     }
   };
-  static POST = async (req: UserRequest, res: Response, next: NextFunction) => {
+  static POST = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const result: CategoryPostResponseType = await CategoryService.POST(
         req.body,
@@ -54,7 +59,7 @@ export class CategoryController {
     req: UserRequest,
     res: Response,
     next: NextFunction,
-  ) => {
+  ): Promise<void> => {
     try {
       const { categoryId } = req.params;
       const result: CategoryPatchResponseType = await CategoryService.PATCH(
@@ -64,7 +69,23 @@ export class CategoryController {
       const response = SuccessResponse.PATCH("category", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
-      console.log({ error });
+      next(error);
+    }
+  };
+
+  static DELETE = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const { categoryId } = req.params;
+      const result: CategoryDeleteResponseType = await CategoryService.DELETE(
+        categoryId as string,
+      );
+      const response = SuccessResponse.DELETE("category", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
       next(error);
     }
   };

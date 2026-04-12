@@ -9,6 +9,7 @@ adminRoutes.use(protect("ADMIN"));
 
 adminRoutes.post("/categories", CategoryController.POST);
 adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);
+adminRoutes.delete("/categories/:categoryId", CategoryController.DELETE);
 
 adminRoutes.get("/medias/query", MediaController.QUERY);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);

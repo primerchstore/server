@@ -2,6 +2,7 @@ import { z } from "zod";
 import { CategoryValidation } from "../../validations/category.validation.js";
 import { Prisma } from "../../generated/prisma/client.js";
 import {
+  CategoryDeleteResponse,
   CategoryGetResponse,
   CategoryPatchResponse,
   CategoryPostResponse,
@@ -35,4 +36,7 @@ export type CategoryPostResponseType = Prisma.CategoryGetPayload<{
 
 export type CategoryPatchResponseType = Prisma.CategoryGetPayload<{
   select: typeof CategoryPatchResponse;
+}>;
+export type CategoryDeleteResponseType = Prisma.CategoryGetPayload<{
+  select: typeof CategoryDeleteResponse;
 }>;
