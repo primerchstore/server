@@ -26,7 +26,7 @@ export class CategoryValidation {
       .nullable()
       .transform((val) => (val === "" ? undefined : val)),
     parentId: z.string().optional(),
-    mediaId: z.string().optional(),
+    addedMedias: z.array(z.string()).optional(),
   });
 
   static PATCH = z.object({
