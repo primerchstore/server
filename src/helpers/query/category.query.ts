@@ -33,15 +33,15 @@ export const categoryQuery = async (
       orderBy = { products: { _count: order as any } };
 
     const [items, totalItems, totalFilters] = await Promise.all([
-      prisma.category.findMany({
+      tx.category.findMany({
         where,
         skip,
         take,
         orderBy,
         select: CategoryQueryResponse,
       }),
-      prisma.category.count(),
-      prisma.category.count({ where }),
+      tx.category.count(),
+      tx.category.count({ where }),
     ]);
 
     const totalPages = Math.ceil(totalFilters / take);

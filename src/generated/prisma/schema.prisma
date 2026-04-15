@@ -171,7 +171,8 @@ model Product {
   slug        String    @unique
   description String?
   basePrice   Decimal   @db.Decimal(12, 2)
-  gender      Gender
+  gender      Gender?
+  sold        Int       @default(0)
   isActive    Boolean   @default(true)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

@@ -3,9 +3,13 @@ import { protect } from "../middlewares/auth.middleware.js";
 import { upload } from "../libs/multer.js";
 import { MediaController } from "../controllers/media.controller.js";
 import { CategoryController } from "../controllers/category.controller.js";
+import { ProductController } from "../controllers/product.controller.js";
 
 const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
+
+adminRoutes.post("/products", ProductController.POST);
+adminRoutes.patch("/products/:productId", ProductController.PATCH);
 
 adminRoutes.post("/categories", CategoryController.POST);
 adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);

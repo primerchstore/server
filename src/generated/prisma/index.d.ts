@@ -9478,10 +9478,12 @@ export namespace Prisma {
 
   export type ProductAvgAggregateOutputType = {
     basePrice: Decimal | null
+    sold: number | null
   }
 
   export type ProductSumAggregateOutputType = {
     basePrice: Decimal | null
+    sold: number | null
   }
 
   export type ProductMinAggregateOutputType = {
@@ -9492,6 +9494,7 @@ export namespace Prisma {
     description: string | null
     basePrice: Decimal | null
     gender: $Enums.Gender | null
+    sold: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9505,6 +9508,7 @@ export namespace Prisma {
     description: string | null
     basePrice: Decimal | null
     gender: $Enums.Gender | null
+    sold: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -9518,6 +9522,7 @@ export namespace Prisma {
     description: number
     basePrice: number
     gender: number
+    sold: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -9527,10 +9532,12 @@ export namespace Prisma {
 
   export type ProductAvgAggregateInputType = {
     basePrice?: true
+    sold?: true
   }
 
   export type ProductSumAggregateInputType = {
     basePrice?: true
+    sold?: true
   }
 
   export type ProductMinAggregateInputType = {
@@ -9541,6 +9548,7 @@ export namespace Prisma {
     description?: true
     basePrice?: true
     gender?: true
+    sold?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -9554,6 +9562,7 @@ export namespace Prisma {
     description?: true
     basePrice?: true
     gender?: true
+    sold?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -9567,6 +9576,7 @@ export namespace Prisma {
     description?: true
     basePrice?: true
     gender?: true
+    sold?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -9666,7 +9676,8 @@ export namespace Prisma {
     slug: string
     description: string | null
     basePrice: Decimal
-    gender: $Enums.Gender
+    gender: $Enums.Gender | null
+    sold: number
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -9699,6 +9710,7 @@ export namespace Prisma {
     description?: boolean
     basePrice?: boolean
     gender?: boolean
+    sold?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9720,6 +9732,7 @@ export namespace Prisma {
     description?: boolean
     basePrice?: boolean
     gender?: boolean
+    sold?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9734,6 +9747,7 @@ export namespace Prisma {
     description?: boolean
     basePrice?: boolean
     gender?: boolean
+    sold?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -9748,12 +9762,13 @@ export namespace Prisma {
     description?: boolean
     basePrice?: boolean
     gender?: boolean
+    sold?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "slug" | "description" | "basePrice" | "gender" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "slug" | "description" | "basePrice" | "gender" | "sold" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | Product$categoryArgs<ExtArgs>
     variants?: boolean | Product$variantsArgs<ExtArgs>
@@ -9789,7 +9804,8 @@ export namespace Prisma {
       slug: string
       description: string | null
       basePrice: Prisma.Decimal
-      gender: $Enums.Gender
+      gender: $Enums.Gender | null
+      sold: number
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -10230,6 +10246,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Product", 'String'>
     readonly basePrice: FieldRef<"Product", 'Decimal'>
     readonly gender: FieldRef<"Product", 'Gender'>
+    readonly sold: FieldRef<"Product", 'Int'>
     readonly isActive: FieldRef<"Product", 'Boolean'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
@@ -31368,6 +31385,7 @@ export namespace Prisma {
     description: 'description',
     basePrice: 'basePrice',
     gender: 'gender',
+    sold: 'sold',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -31730,20 +31748,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'SizeLabel'
-   */
-  export type EnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel'>
-    
-
-
-  /**
-   * Reference to a field of type 'SizeLabel[]'
-   */
-  export type ListEnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -31754,6 +31758,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'SizeLabel'
+   */
+  export type EnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel'>
+    
+
+
+  /**
+   * Reference to a field of type 'SizeLabel[]'
+   */
+  export type ListEnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel[]'>
     
 
 
@@ -32266,7 +32284,8 @@ export namespace Prisma {
     slug?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
     basePrice?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFilter<"Product"> | $Enums.Gender
+    gender?: EnumGenderNullableFilter<"Product"> | $Enums.Gender | null
+    sold?: IntFilter<"Product"> | number
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -32286,7 +32305,8 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     basePrice?: SortOrder
-    gender?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    sold?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -32309,7 +32329,8 @@ export namespace Prisma {
     name?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
     basePrice?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFilter<"Product"> | $Enums.Gender
+    gender?: EnumGenderNullableFilter<"Product"> | $Enums.Gender | null
+    sold?: IntFilter<"Product"> | number
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -32329,7 +32350,8 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     basePrice?: SortOrder
-    gender?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    sold?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -32350,7 +32372,8 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Product"> | string
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
     basePrice?: DecimalWithAggregatesFilter<"Product"> | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderWithAggregatesFilter<"Product"> | $Enums.Gender
+    gender?: EnumGenderNullableWithAggregatesFilter<"Product"> | $Enums.Gender | null
+    sold?: IntWithAggregatesFilter<"Product"> | number
     isActive?: BoolWithAggregatesFilter<"Product"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -34098,7 +34121,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -34118,7 +34142,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -34136,7 +34161,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34156,7 +34182,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34175,7 +34202,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -34187,7 +34215,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -34200,7 +34229,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35981,11 +36011,22 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type EnumGenderFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
+  export type EnumGenderNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderNullableFilter<$PrismaModel> | $Enums.Gender | null
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type VariantListRelationFilter = {
@@ -36026,6 +36067,7 @@ export namespace Prisma {
     description?: SortOrder
     basePrice?: SortOrder
     gender?: SortOrder
+    sold?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -36033,6 +36075,7 @@ export namespace Prisma {
 
   export type ProductAvgOrderByAggregateInput = {
     basePrice?: SortOrder
+    sold?: SortOrder
   }
 
   export type ProductMaxOrderByAggregateInput = {
@@ -36043,6 +36086,7 @@ export namespace Prisma {
     description?: SortOrder
     basePrice?: SortOrder
     gender?: SortOrder
+    sold?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -36056,6 +36100,7 @@ export namespace Prisma {
     description?: SortOrder
     basePrice?: SortOrder
     gender?: SortOrder
+    sold?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -36063,6 +36108,7 @@ export namespace Prisma {
 
   export type ProductSumOrderByAggregateInput = {
     basePrice?: SortOrder
+    sold?: SortOrder
   }
 
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -36081,14 +36127,30 @@ export namespace Prisma {
     _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type EnumGenderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
+  export type EnumGenderNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel> | $Enums.Gender | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderFilter<$PrismaModel>
-    _max?: NestedEnumGenderFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type TagCountOrderByAggregateInput = {
@@ -36161,17 +36223,6 @@ export namespace Prisma {
     not?: NestedEnumSizeLabelFilter<$PrismaModel> | $Enums.SizeLabel
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type SizeCountOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
@@ -36212,22 +36263,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSizeLabelFilter<$PrismaModel>
     _max?: NestedEnumSizeLabelFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type ColourCountOrderByAggregateInput = {
@@ -37638,8 +37673,16 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type EnumGenderFieldUpdateOperationsInput = {
-    set?: $Enums.Gender
+  export type NullableEnumGenderFieldUpdateOperationsInput = {
+    set?: $Enums.Gender | null
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type CategoryUpdateOneWithoutProductsNestedInput = {
@@ -37906,14 +37949,6 @@ export namespace Prisma {
 
   export type EnumSizeLabelFieldUpdateOperationsInput = {
     set?: $Enums.SizeLabel
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type VariantUpdateManyWithoutSizeNestedInput = {
@@ -39037,11 +39072,11 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
-  export type NestedEnumGenderFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderFilter<$PrismaModel> | $Enums.Gender
+  export type NestedEnumGenderNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderNullableFilter<$PrismaModel> | $Enums.Gender | null
   }
 
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -39060,31 +39095,14 @@ export namespace Prisma {
     _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type NestedEnumGenderWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel>
-    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderWithAggregatesFilter<$PrismaModel> | $Enums.Gender
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderFilter<$PrismaModel>
-    _max?: NestedEnumGenderFilter<$PrismaModel>
-  }
-
-  export type NestedEnumSizeLabelFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelFilter<$PrismaModel> | $Enums.SizeLabel
-  }
-
-  export type NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel> | $Enums.SizeLabel
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSizeLabelFilter<$PrismaModel>
-    _max?: NestedEnumSizeLabelFilter<$PrismaModel>
+  export type NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.Gender[] | ListEnumGenderFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel> | $Enums.Gender | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -39112,6 +39130,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumSizeLabelFilter<$PrismaModel = never> = {
+    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
+    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSizeLabelFilter<$PrismaModel> | $Enums.SizeLabel
+  }
+
+  export type NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
+    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
+    not?: NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel> | $Enums.SizeLabel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSizeLabelFilter<$PrismaModel>
+    _max?: NestedEnumSizeLabelFilter<$PrismaModel>
   }
 
   export type NestedEnumMediaTypeFilter<$PrismaModel = never> = {
@@ -40006,7 +40041,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40024,7 +40060,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40162,7 +40199,8 @@ export namespace Prisma {
     slug?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
     basePrice?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFilter<"Product"> | $Enums.Gender
+    gender?: EnumGenderNullableFilter<"Product"> | $Enums.Gender | null
+    sold?: IntFilter<"Product"> | number
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -40611,7 +40649,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40630,7 +40669,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40684,7 +40724,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40703,7 +40744,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40863,7 +40905,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40882,7 +40925,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41065,7 +41109,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41084,7 +41129,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41381,7 +41427,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41400,7 +41447,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41460,7 +41508,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41479,7 +41528,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41793,7 +41843,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41812,7 +41863,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -41933,7 +41985,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -41952,7 +42005,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42562,7 +42616,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42581,7 +42636,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -42671,7 +42727,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -42690,7 +42747,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43233,7 +43291,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43252,7 +43311,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43336,7 +43396,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43355,7 +43416,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43758,7 +43820,8 @@ export namespace Prisma {
     slug: string
     description?: string | null
     basePrice: Decimal | DecimalJsLike | number | string
-    gender: $Enums.Gender
+    gender?: $Enums.Gender | null
+    sold?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43811,7 +43874,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43829,7 +43893,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -43847,7 +43912,8 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     basePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    sold?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

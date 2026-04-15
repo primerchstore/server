@@ -4,4 +4,8 @@ export class Sort {
     items: ["name", "productCount", "createdAt", "updatedAt"],
     default: "createdAt",
   };
+  static PRODUCT = {
+    items: ["name", "createdAt", "updatedAt", "sold"],
+    default: "createdAt",
+  };
 }
