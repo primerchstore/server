@@ -281,7 +281,7 @@ model Media {
 model ProductMedia {
   id        String   @id @default(cuid())
   productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: SetDefault)
   mediaId   String
   media     Media    @relation(fields: [mediaId], references: [id], onDelete: Cascade)
   sortOrder Int      @default(0)

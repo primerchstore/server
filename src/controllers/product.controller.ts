@@ -1,5 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 import {
+  ProductDeleteResponseType,
   ProductGetResponseType,
   ProductPatchResponseType,
   ProductPostResponseType,
@@ -76,11 +77,17 @@ export class ProductController {
   };
 
   static DELETE = async (
-    req: Request,
+    req: UserRequest,
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
     try {
+      const { productId } = req.params;
+      const result: ProductDeleteResponseType = await ProductService.DELETE(
+        productId as string,
+      );
+      const response = SuccessResponse.DELETE("product", result);
+      res.status(response.statusCode).json(response);
     } catch (error) {
       next(error);
     }

@@ -3,6 +3,7 @@ import { ProductValidation } from "../../validations/product.validation.js";
 import { Pagination } from "./pagination.type.js";
 import { Prisma } from "../../generated/prisma/client.js";
 import {
+  ProductDeleteResponse,
   ProductGetResponse,
   ProductPatchResponse,
   ProductPostResponse,
@@ -33,4 +34,7 @@ export type ProductPostResponseType = Prisma.ProductGetPayload<{
 
 export type ProductPatchResponseType = Prisma.ProductGetPayload<{
   select: typeof ProductPatchResponse;
+}>;
+export type ProductDeleteResponseType = Prisma.ProductGetPayload<{
+  select: typeof ProductDeleteResponse;
 }>;

@@ -1,8 +1,10 @@
+import { productDelete } from "../helpers/delete/product.delete.js";
 import { productGet } from "../helpers/get/product.get.js";
 import { productPatch } from "../helpers/patch/product.patch.js";
 import { productPost } from "../helpers/post/product.post.js";
 import { productQuery } from "../helpers/query/product.query.js";
 import {
+  ProductDeleteResponseType,
   ProductGetResponseType,
   ProductGetValidationType,
   ProductPatchResponseType,
@@ -37,5 +39,8 @@ export class ProductService {
     data: ProductPatchValidationType,
   ): Promise<ProductPatchResponseType> => {
     return productPatch(id, data);
+  };
+  static DELETE = async (id: string): Promise<ProductDeleteResponseType> => {
+    return productDelete(id);
   };
 }

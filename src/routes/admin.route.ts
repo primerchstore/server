@@ -10,6 +10,7 @@ adminRoutes.use(protect("ADMIN"));
 
 adminRoutes.post("/products", ProductController.POST);
 adminRoutes.patch("/products/:productId", ProductController.PATCH);
+adminRoutes.delete("/products/:productId", ProductController.DELETE);
 
 adminRoutes.post("/categories", CategoryController.POST);
 adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);
