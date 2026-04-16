@@ -18,7 +18,7 @@ export const productPatch = async (
   data: ProductPatchValidationType,
 ): Promise<ProductPatchResponseType> => {
   return prisma.$transaction(async (tx) => {
-    const { addedMedias, deletedMedias, ...validatedData } =
+    const { addedMedias, deletedMedias, tags, ...validatedData } =
       Validation.validate(ProductValidation.PATCH, data);
 
     const product = await tx.product.findUnique({
@@ -147,7 +147,27 @@ export const productPatch = async (
 
     return tx.product.update({
       where: { id },
-      data: { ...validatedData, slug },
+      data: {
+        ...validatedData,
+        slug,
+        tags: {
+          deleteMany: {},
+          create: tags?.map((tagName) => {
+            const slug = slugify(tagName, slugifySetting);
+            return {
+              tag: {
+                connectOrCreate: {
+                  where: { slug },
+                  create: {
+                    name: tagName,
+                    slug,
+                  },
+                },
+              },
+            };
+          }),
+        },
+      },
       select: ProductPatchResponse,
     });
   });

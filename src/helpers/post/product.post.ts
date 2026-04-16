@@ -16,7 +16,7 @@ export const productPost = async (
   data: ProductPostValidationType,
 ): Promise<ProductPostResponseType> => {
   return prisma.$transaction(async (tx) => {
-    const { addedMedias, ...validatedData } = Validation.validate(
+    const { addedMedias, tags, ...validatedData } = Validation.validate(
       ProductValidation.POST,
       data,
     );
@@ -41,7 +41,23 @@ export const productPost = async (
       throw new ResponseError(ErrorResponseMessage.ALREADY_EXISTS("product"));
 
     const product = await tx.product.create({
-      data: { slug, ...validatedData },
+      data: {
+        slug,
+        ...validatedData,
+        tags: {
+          create: tags?.map((tagName) => {
+            const slug = slugify(tagName, slugifySetting);
+            return {
+              tag: {
+                connectOrCreate: {
+                  where: { slug },
+                  create: { name: tagName, slug },
+                },
+              },
+            };
+          }),
+        },
+      },
       select: { id: true },
     });
 

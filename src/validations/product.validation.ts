@@ -34,6 +34,7 @@ export class ProductValidation {
     categoryId: z.string().optional(),
     gender: z.enum(Gender).optional(),
     isActive: z.boolean().default(true),
+    tags: z.array(z.string()).optional(),
     addedMedias: z.array(z.string()).optional(),
   });
   static PATCH = z.object({
@@ -49,6 +50,7 @@ export class ProductValidation {
     gender: z.enum(Gender).optional(),
     categoryId: z.string().optional(),
     isActive: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
     addedMedias: z.array(z.string()).optional(),
     deletedMedias: z.array(z.string()).optional(),
   });
