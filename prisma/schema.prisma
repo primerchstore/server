@@ -108,15 +108,6 @@ enum MediaType {
   VIDEO
 }
 
-enum SizeLabel {
-  XS
-  S
-  M
-  L
-  XL
-  XXL
-}
-
 enum PromoType {
   PERCENTAGE
   FIXED
@@ -215,11 +206,11 @@ model ProductTag {
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
 model Size {
-  id        String    @id @default(cuid())
-  label     SizeLabel
-  sortOrder Int       @default(0)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id        String   @id @default(cuid())
+  name      String
+  code      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   variants Variant[]
 

@@ -12,4 +12,8 @@ export class Sort {
     items: ["name", "createdAt", "updatedAt", "hexCode"],
     default: "createdAt",
   };
+  static SIZE = {
+    items: ["name", "createdAt", "updatedAt", "hexCode"],
+    default: "createdAt",
+  };
 }

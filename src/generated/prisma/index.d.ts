@@ -172,18 +172,6 @@ export const MediaType: {
 export type MediaType = (typeof MediaType)[keyof typeof MediaType]
 
 
-export const SizeLabel: {
-  XS: 'XS',
-  S: 'S',
-  M: 'M',
-  L: 'L',
-  XL: 'XL',
-  XXL: 'XXL'
-};
-
-export type SizeLabel = (typeof SizeLabel)[keyof typeof SizeLabel]
-
-
 export const PromoType: {
   PERCENTAGE: 'PERCENTAGE',
   FIXED: 'FIXED'
@@ -239,10 +227,6 @@ export const Gender: typeof $Enums.Gender
 export type MediaType = $Enums.MediaType
 
 export const MediaType: typeof $Enums.MediaType
-
-export type SizeLabel = $Enums.SizeLabel
-
-export const SizeLabel: typeof $Enums.SizeLabel
 
 export type PromoType = $Enums.PromoType
 
@@ -12984,74 +12968,56 @@ export namespace Prisma {
 
   export type AggregateSize = {
     _count: SizeCountAggregateOutputType | null
-    _avg: SizeAvgAggregateOutputType | null
-    _sum: SizeSumAggregateOutputType | null
     _min: SizeMinAggregateOutputType | null
     _max: SizeMaxAggregateOutputType | null
   }
 
-  export type SizeAvgAggregateOutputType = {
-    sortOrder: number | null
-  }
-
-  export type SizeSumAggregateOutputType = {
-    sortOrder: number | null
-  }
-
   export type SizeMinAggregateOutputType = {
     id: string | null
-    label: $Enums.SizeLabel | null
-    sortOrder: number | null
+    name: string | null
+    code: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type SizeMaxAggregateOutputType = {
     id: string | null
-    label: $Enums.SizeLabel | null
-    sortOrder: number | null
+    name: string | null
+    code: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type SizeCountAggregateOutputType = {
     id: number
-    label: number
-    sortOrder: number
+    name: number
+    code: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type SizeAvgAggregateInputType = {
-    sortOrder?: true
-  }
-
-  export type SizeSumAggregateInputType = {
-    sortOrder?: true
-  }
-
   export type SizeMinAggregateInputType = {
     id?: true
-    label?: true
-    sortOrder?: true
+    name?: true
+    code?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type SizeMaxAggregateInputType = {
     id?: true
-    label?: true
-    sortOrder?: true
+    name?: true
+    code?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type SizeCountAggregateInputType = {
     id?: true
-    label?: true
-    sortOrder?: true
+    name?: true
+    code?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -13095,18 +13061,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: SizeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SizeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: SizeMinAggregateInputType
@@ -13137,21 +13091,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: SizeCountAggregateInputType | true
-    _avg?: SizeAvgAggregateInputType
-    _sum?: SizeSumAggregateInputType
     _min?: SizeMinAggregateInputType
     _max?: SizeMaxAggregateInputType
   }
 
   export type SizeGroupByOutputType = {
     id: string
-    label: $Enums.SizeLabel
-    sortOrder: number
+    name: string
+    code: string
     createdAt: Date
     updatedAt: Date
     _count: SizeCountAggregateOutputType | null
-    _avg: SizeAvgAggregateOutputType | null
-    _sum: SizeSumAggregateOutputType | null
     _min: SizeMinAggregateOutputType | null
     _max: SizeMaxAggregateOutputType | null
   }
@@ -13172,8 +13122,8 @@ export namespace Prisma {
 
   export type SizeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    label?: boolean
-    sortOrder?: boolean
+    name?: boolean
+    code?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     variants?: boolean | Size$variantsArgs<ExtArgs>
@@ -13182,29 +13132,29 @@ export namespace Prisma {
 
   export type SizeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    label?: boolean
-    sortOrder?: boolean
+    name?: boolean
+    code?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["size"]>
 
   export type SizeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    label?: boolean
-    sortOrder?: boolean
+    name?: boolean
+    code?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["size"]>
 
   export type SizeSelectScalar = {
     id?: boolean
-    label?: boolean
-    sortOrder?: boolean
+    name?: boolean
+    code?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SizeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["size"]>
+  export type SizeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["size"]>
   export type SizeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variants?: boolean | Size$variantsArgs<ExtArgs>
     _count?: boolean | SizeCountOutputTypeDefaultArgs<ExtArgs>
@@ -13219,8 +13169,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      label: $Enums.SizeLabel
-      sortOrder: number
+      name: string
+      code: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["size"]>
@@ -13648,8 +13598,8 @@ export namespace Prisma {
    */
   interface SizeFieldRefs {
     readonly id: FieldRef<"Size", 'String'>
-    readonly label: FieldRef<"Size", 'SizeLabel'>
-    readonly sortOrder: FieldRef<"Size", 'Int'>
+    readonly name: FieldRef<"Size", 'String'>
+    readonly code: FieldRef<"Size", 'String'>
     readonly createdAt: FieldRef<"Size", 'DateTime'>
     readonly updatedAt: FieldRef<"Size", 'DateTime'>
   }
@@ -31456,8 +31406,8 @@ export namespace Prisma {
 
   export const SizeScalarFieldEnum: {
     id: 'id',
-    label: 'label',
-    sortOrder: 'sortOrder',
+    name: 'name',
+    code: 'code',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -31796,20 +31746,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'SizeLabel'
-   */
-  export type EnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel'>
-    
-
-
-  /**
-   * Reference to a field of type 'SizeLabel[]'
-   */
-  export type ListEnumSizeLabelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SizeLabel[]'>
     
 
 
@@ -32536,8 +32472,8 @@ export namespace Prisma {
     OR?: SizeWhereInput[]
     NOT?: SizeWhereInput | SizeWhereInput[]
     id?: StringFilter<"Size"> | string
-    label?: EnumSizeLabelFilter<"Size"> | $Enums.SizeLabel
-    sortOrder?: IntFilter<"Size"> | number
+    name?: StringFilter<"Size"> | string
+    code?: StringFilter<"Size"> | string
     createdAt?: DateTimeFilter<"Size"> | Date | string
     updatedAt?: DateTimeFilter<"Size"> | Date | string
     variants?: VariantListRelationFilter
@@ -32545,8 +32481,8 @@ export namespace Prisma {
 
   export type SizeOrderByWithRelationInput = {
     id?: SortOrder
-    label?: SortOrder
-    sortOrder?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     variants?: VariantOrderByRelationAggregateInput
@@ -32557,8 +32493,8 @@ export namespace Prisma {
     AND?: SizeWhereInput | SizeWhereInput[]
     OR?: SizeWhereInput[]
     NOT?: SizeWhereInput | SizeWhereInput[]
-    label?: EnumSizeLabelFilter<"Size"> | $Enums.SizeLabel
-    sortOrder?: IntFilter<"Size"> | number
+    name?: StringFilter<"Size"> | string
+    code?: StringFilter<"Size"> | string
     createdAt?: DateTimeFilter<"Size"> | Date | string
     updatedAt?: DateTimeFilter<"Size"> | Date | string
     variants?: VariantListRelationFilter
@@ -32566,15 +32502,13 @@ export namespace Prisma {
 
   export type SizeOrderByWithAggregationInput = {
     id?: SortOrder
-    label?: SortOrder
-    sortOrder?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: SizeCountOrderByAggregateInput
-    _avg?: SizeAvgOrderByAggregateInput
     _max?: SizeMaxOrderByAggregateInput
     _min?: SizeMinOrderByAggregateInput
-    _sum?: SizeSumOrderByAggregateInput
   }
 
   export type SizeScalarWhereWithAggregatesInput = {
@@ -32582,8 +32516,8 @@ export namespace Prisma {
     OR?: SizeScalarWhereWithAggregatesInput[]
     NOT?: SizeScalarWhereWithAggregatesInput | SizeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Size"> | string
-    label?: EnumSizeLabelWithAggregatesFilter<"Size"> | $Enums.SizeLabel
-    sortOrder?: IntWithAggregatesFilter<"Size"> | number
+    name?: StringWithAggregatesFilter<"Size"> | string
+    code?: StringWithAggregatesFilter<"Size"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Size"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Size"> | Date | string
   }
@@ -34390,8 +34324,8 @@ export namespace Prisma {
 
   export type SizeCreateInput = {
     id?: string
-    label: $Enums.SizeLabel
-    sortOrder?: number
+    name: string
+    code: string
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: VariantCreateNestedManyWithoutSizeInput
@@ -34399,8 +34333,8 @@ export namespace Prisma {
 
   export type SizeUncheckedCreateInput = {
     id?: string
-    label: $Enums.SizeLabel
-    sortOrder?: number
+    name: string
+    code: string
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: VariantUncheckedCreateNestedManyWithoutSizeInput
@@ -34408,8 +34342,8 @@ export namespace Prisma {
 
   export type SizeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: VariantUpdateManyWithoutSizeNestedInput
@@ -34417,8 +34351,8 @@ export namespace Prisma {
 
   export type SizeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: VariantUncheckedUpdateManyWithoutSizeNestedInput
@@ -34426,24 +34360,24 @@ export namespace Prisma {
 
   export type SizeCreateManyInput = {
     id?: string
-    label: $Enums.SizeLabel
-    sortOrder?: number
+    name: string
+    code: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type SizeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SizeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -36254,53 +36188,28 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EnumSizeLabelFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelFilter<$PrismaModel> | $Enums.SizeLabel
-  }
-
   export type SizeCountOrderByAggregateInput = {
     id?: SortOrder
-    label?: SortOrder
-    sortOrder?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type SizeAvgOrderByAggregateInput = {
-    sortOrder?: SortOrder
-  }
-
   export type SizeMaxOrderByAggregateInput = {
     id?: SortOrder
-    label?: SortOrder
-    sortOrder?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type SizeMinOrderByAggregateInput = {
     id?: SortOrder
-    label?: SortOrder
-    sortOrder?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type SizeSumOrderByAggregateInput = {
-    sortOrder?: SortOrder
-  }
-
-  export type EnumSizeLabelWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel> | $Enums.SizeLabel
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSizeLabelFilter<$PrismaModel>
-    _max?: NestedEnumSizeLabelFilter<$PrismaModel>
   }
 
   export type ColourCountOrderByAggregateInput = {
@@ -37985,10 +37894,6 @@ export namespace Prisma {
     connect?: VariantWhereUniqueInput | VariantWhereUniqueInput[]
   }
 
-  export type EnumSizeLabelFieldUpdateOperationsInput = {
-    set?: $Enums.SizeLabel
-  }
-
   export type VariantUpdateManyWithoutSizeNestedInput = {
     create?: XOR<VariantCreateWithoutSizeInput, VariantUncheckedCreateWithoutSizeInput> | VariantCreateWithoutSizeInput[] | VariantUncheckedCreateWithoutSizeInput[]
     connectOrCreate?: VariantCreateOrConnectWithoutSizeInput | VariantCreateOrConnectWithoutSizeInput[]
@@ -39172,23 +39077,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedEnumSizeLabelFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelFilter<$PrismaModel> | $Enums.SizeLabel
-  }
-
-  export type NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SizeLabel | EnumSizeLabelFieldRefInput<$PrismaModel>
-    in?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SizeLabel[] | ListEnumSizeLabelFieldRefInput<$PrismaModel>
-    not?: NestedEnumSizeLabelWithAggregatesFilter<$PrismaModel> | $Enums.SizeLabel
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSizeLabelFilter<$PrismaModel>
-    _max?: NestedEnumSizeLabelFilter<$PrismaModel>
   }
 
   export type NestedEnumMediaTypeFilter<$PrismaModel = never> = {
@@ -40986,16 +40874,16 @@ export namespace Prisma {
 
   export type SizeCreateWithoutVariantsInput = {
     id?: string
-    label: $Enums.SizeLabel
-    sortOrder?: number
+    name: string
+    code: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type SizeUncheckedCreateWithoutVariantsInput = {
     id?: string
-    label: $Enums.SizeLabel
-    sortOrder?: number
+    name: string
+    code: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -41196,16 +41084,16 @@ export namespace Prisma {
 
   export type SizeUpdateWithoutVariantsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SizeUncheckedUpdateWithoutVariantsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    label?: EnumSizeLabelFieldUpdateOperationsInput | $Enums.SizeLabel
-    sortOrder?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

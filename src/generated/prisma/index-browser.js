@@ -214,8 +214,8 @@ exports.Prisma.ProductTagScalarFieldEnum = {
 
 exports.Prisma.SizeScalarFieldEnum = {
   id: 'id',
-  label: 'label',
-  sortOrder: 'sortOrder',
+  name: 'name',
+  code: 'code',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -404,15 +404,6 @@ exports.Gender = exports.$Enums.Gender = {
   MEN: 'MEN',
   WOMEN: 'WOMEN',
   UNISEX: 'UNISEX'
-};
-
-exports.SizeLabel = exports.$Enums.SizeLabel = {
-  XS: 'XS',
-  S: 'S',
-  M: 'M',
-  L: 'L',
-  XL: 'XL',
-  XXL: 'XXL'
 };
 
 exports.MediaType = exports.$Enums.MediaType = {
