@@ -8,4 +8,8 @@ export class Sort {
     items: ["name", "createdAt", "updatedAt", "sold"],
     default: "createdAt",
   };
+  static COLOUR = {
+    items: ["name", "createdAt", "updatedAt", "hexCode"],
+    default: "createdAt",
+  };
 }

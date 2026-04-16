@@ -1,4 +1,5 @@
 import { prisma } from "../../libs/prisma.js";
+import { CategoryDeleteResponse } from "../responses/category.response.js";
 import {
   ErrorResponseMessage,
   ResponseError,
@@ -15,6 +16,9 @@ export const categoryDelete = async (
     });
     if (!category)
       throw new ResponseError(ErrorResponseMessage.NOT_FOUND("category"));
-    return tx.category.delete({ where: { id }, select: { id: true } });
+    return tx.category.delete({
+      where: { id },
+      select: CategoryDeleteResponse,
+    });
   });
 };

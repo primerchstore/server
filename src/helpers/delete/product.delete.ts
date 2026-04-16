@@ -3,6 +3,7 @@ import {
   ErrorResponseMessage,
   ResponseError,
 } from "../responses/error.response.js";
+import { ProductDeleteResponse } from "../responses/product.response.js";
 import { ProductDeleteResponseType } from "../types/product.type.js";
 
 export const productDelete = async (
@@ -17,6 +18,6 @@ export const productDelete = async (
     if (!product)
       throw new ResponseError(ErrorResponseMessage.NOT_FOUND("product"));
 
-    return tx.product.delete({ where: { id }, select: { id: true } });
+    return tx.product.delete({ where: { id }, select: ProductDeleteResponse });
   });
 };

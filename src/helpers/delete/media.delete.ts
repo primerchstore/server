@@ -10,6 +10,7 @@ import {
   ResponseError,
 } from "../responses/error.response.js";
 import cloudinary from "../../libs/cloudinary.js";
+import { MediaDeleteResponse } from "../responses/media.response.js";
 
 export const mediaDelete = async (
   id: MediaDeleteValidationType,
@@ -30,7 +31,7 @@ export const mediaDelete = async (
 
     return tx.media.delete({
       where: { id: validatedId.id },
-      select: { id: true },
+      select: MediaDeleteResponse,
     });
   });
 };

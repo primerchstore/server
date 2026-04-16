@@ -4,6 +4,7 @@ import { upload } from "../libs/multer.js";
 import { MediaController } from "../controllers/media.controller.js";
 import { CategoryController } from "../controllers/category.controller.js";
 import { ProductController } from "../controllers/product.controller.js";
+import { ColourController } from "../controllers/colour.controller.js";
 
 const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
@@ -11,6 +12,11 @@ adminRoutes.use(protect("ADMIN"));
 adminRoutes.post("/products", ProductController.POST);
 adminRoutes.patch("/products/:productId", ProductController.PATCH);
 adminRoutes.delete("/products/:productId", ProductController.DELETE);
+
+adminRoutes.get("/colours/query", ColourController.QUERY);
+adminRoutes.post("/colours", ColourController.POST);
+adminRoutes.patch("/colours/:colourId", ColourController.PATCH);
+adminRoutes.delete("/colours/:colourId", ColourController.DELETE);
 
 adminRoutes.post("/categories", CategoryController.POST);
 adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);
