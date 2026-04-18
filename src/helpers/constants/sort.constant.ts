@@ -16,4 +16,8 @@ export class Sort {
     items: ["name", "createdAt", "updatedAt", "hexCode"],
     default: "createdAt",
   };
+  static VARIANT = {
+    items: ["name", "createdAt", "updatedAt", "stock"],
+    default: "createdAt",
+  };
 }
