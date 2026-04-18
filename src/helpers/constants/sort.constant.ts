@@ -20,4 +20,17 @@ export class Sort {
     items: ["name", "createdAt", "updatedAt", "stock"],
     default: "createdAt",
   };
+  static ADDRESS = {
+    items: [
+      "recipient",
+      "createdAt",
+      "updatedAt",
+      "phone",
+      "street",
+      "city",
+      "province",
+      "postalCode",
+    ],
+    default: "createdAt",
+  };
 }
