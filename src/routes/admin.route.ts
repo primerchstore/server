@@ -7,6 +7,7 @@ import { ProductController } from "../controllers/product.controller.js";
 import { ColourController } from "../controllers/colour.controller.js";
 import { SizeController } from "../controllers/size.controller.js";
 import { VariantController } from "../controllers/variant.controller.js";
+import { AddressAdminController } from "../controllers/address.controller.js";
 
 const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
@@ -30,6 +31,8 @@ adminRoutes.get("/variants/get", VariantController.GET);
 adminRoutes.post("/variants", VariantController.POST);
 adminRoutes.patch("/variants/:variantId", VariantController.PATCH);
 adminRoutes.delete("/variants/:variantId", VariantController.DELETE);
+
+adminRoutes.get("/addresses/query", AddressAdminController.QUERY);
 
 adminRoutes.post("/categories", CategoryController.POST);
 adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);

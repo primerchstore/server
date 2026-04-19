@@ -6,7 +6,10 @@ import {
   AddressPostResponseType,
   AddressQueryResponseType,
 } from "../helpers/types/address.type.js";
-import { AddressService } from "../services/address.service.js";
+import {
+  AddressAdminService,
+  AddressService,
+} from "../services/address.service.js";
 import { SuccessResponse } from "../helpers/responses/success.response.js";
 
 export class AddressController {
@@ -75,6 +78,24 @@ export class AddressController {
         req.session?.user.id!,
       );
       const response = SuccessResponse.DELETE("address", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+export class AddressAdminController {
+  static QUERY = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const result: AddressQueryResponseType = await AddressAdminService.QUERY(
+        req.query as any,
+      );
+      const response = SuccessResponse.QUERY("address", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
       next(error);
