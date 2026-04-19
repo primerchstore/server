@@ -13,7 +13,8 @@ export const addressPost = async (
 ): Promise<AddressPostResponseType> => {
   return prisma.$transaction(async (tx) => {
     const validatedData = Validation.validate(AddressValidation.POST, data);
-    const defaultExist = await tx.address.findMany({
+
+    const defaultExist = await tx.address.findFirst({
       where: { isDefault: true },
       select: { id: true },
     });
