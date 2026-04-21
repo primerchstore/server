@@ -4,6 +4,7 @@ export type Schema =
   | "tag"
   | "order"
   | "variant"
+  | "variantCart"
   | "user"
   | "media"
   | "size"

@@ -64,8 +64,6 @@ export const variantPatch = async (
       select: { id: true, sku: true },
     });
 
-    console.log({ old: variantExist?.sku, new: newSku });
-
     if (variantExist)
       throw new ResponseError(ErrorResponseMessage.ALREADY_EXISTS("variant"));
 

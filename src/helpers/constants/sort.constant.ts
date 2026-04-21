@@ -33,4 +33,8 @@ export class Sort {
     ],
     default: "createdAt",
   };
+  static VARIANT_IN_CART = {
+    items: ["createdAt", "updatedAt"],
+    default: "createdAt",
+  };
 }
