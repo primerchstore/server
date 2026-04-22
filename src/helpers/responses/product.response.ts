@@ -57,7 +57,7 @@ export const ProductGetResponse = {
       size: {
         select: {
           id: true,
-          label: true,
+          name: true,
         },
       },
       colour: {

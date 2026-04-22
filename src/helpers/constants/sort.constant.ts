@@ -41,4 +41,8 @@ export class Sort {
     items: ["createdAt", "updatedAt"],
     default: "createdAt",
   };
+  static WISHLIST = {
+    items: ["createdAt", "updatedAt"],
+    default: "createdAt",
+  };
 }
