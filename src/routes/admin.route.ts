@@ -8,6 +8,7 @@ import { ColourController } from "../controllers/colour.controller.js";
 import { SizeController } from "../controllers/size.controller.js";
 import { VariantController } from "../controllers/variant.controller.js";
 import { AddressAdminController } from "../controllers/address.controller.js";
+import { OrderAdminController } from "../controllers/order.controller.js";
 
 const adminRoutes = express.Router();
 adminRoutes.use(protect("ADMIN"));
@@ -41,5 +42,12 @@ adminRoutes.delete("/categories/:categoryId", CategoryController.DELETE);
 adminRoutes.get("/medias/query", MediaController.QUERY);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);
 adminRoutes.delete("/medias/:mediaId", MediaController.DELETE);
+
+adminRoutes.get("/orders/query", OrderAdminController.QUERY);
+adminRoutes.get("/orders/get", OrderAdminController.GET);
+adminRoutes.patch(
+  "/orders/:orderId/status",
+  OrderAdminController.UPDATE_STATUS,
+);
 
 export default adminRoutes;

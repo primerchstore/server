@@ -37,4 +37,8 @@ export class Sort {
     items: ["createdAt", "updatedAt"],
     default: "createdAt",
   };
+  static ORDER_USER = {
+    items: ["createdAt", "updatedAt"],
+    default: "createdAt",
+  };
 }
