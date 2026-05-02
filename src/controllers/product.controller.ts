@@ -5,8 +5,12 @@ import {
   ProductPatchResponseType,
   ProductPostResponseType,
   ProductQueryResponseType,
+  ProductUtilGetTotalStockResponseType,
 } from "../helpers/types/product.type.js";
-import { ProductService } from "../services/product.service.js";
+import {
+  ProductService,
+  ProductUtilService,
+} from "../services/product.service.js";
 import { SuccessResponse } from "../helpers/responses/success.response.js";
 import { UserRequest } from "../helpers/types/user.type.js";
 
@@ -87,6 +91,26 @@ export class ProductController {
         productId as string,
       );
       const response = SuccessResponse.DELETE("product", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+export class ProductUtilController {
+  static GET_TOTAL_STOCK = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const { productId } = req.params;
+      const result: ProductUtilGetTotalStockResponseType =
+        await ProductUtilService.GET_TOTAL_STOCK({
+          productId: productId as string,
+        });
+      const response = SuccessResponse.GET("product", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
       next(error);

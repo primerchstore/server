@@ -41,6 +41,11 @@ adminRoutes.delete("/categories/:categoryId", CategoryController.DELETE);
 
 adminRoutes.get("/medias/query", MediaController.QUERY);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);
+adminRoutes.post(
+  "/medias/bulk",
+  upload.array("images", 10),
+  MediaController.POST_BULK,
+);
 adminRoutes.delete("/medias/:mediaId", MediaController.DELETE);
 
 adminRoutes.get("/orders/query", OrderAdminController.QUERY);

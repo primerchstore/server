@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { ProductValidation } from "../../validations/product.validation.js";
+import {
+  ProductUtilValidation,
+  ProductValidation,
+} from "../../validations/product.validation.js";
 import { Pagination } from "./pagination.type.js";
 import { Prisma } from "../../generated/prisma/client.js";
 import {
@@ -8,6 +11,7 @@ import {
   ProductPatchResponse,
   ProductPostResponse,
   ProductQueryResponse,
+  ProductUtilGetTotalStockResponse,
 } from "../responses/product.response.js";
 
 export type ProductQueryValidationType = z.infer<
@@ -17,6 +21,9 @@ export type ProductGetValidationType = z.infer<typeof ProductValidation.GET>;
 export type ProductPostValidationType = z.infer<typeof ProductValidation.POST>;
 export type ProductPatchValidationType = z.infer<
   typeof ProductValidation.PATCH
+>;
+export type ProductUtilGetTotalStockValidationType = z.infer<
+  typeof ProductUtilValidation.GET_TOTAL_STOCK
 >;
 
 export type ProductQueryResponseType = {
@@ -38,3 +45,9 @@ export type ProductPatchResponseType = Prisma.ProductGetPayload<{
 export type ProductDeleteResponseType = Prisma.ProductGetPayload<{
   select: typeof ProductDeleteResponse;
 }>;
+
+export type ProductUtilGetTotalStockResponseType = Prisma.ProductGetPayload<{
+  select: typeof ProductUtilGetTotalStockResponse;
+}> & {
+  stock: number;
+};

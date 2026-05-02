@@ -19,6 +19,7 @@ export const sizeQuery = async (
     const where: Prisma.SizeWhereInput = {
       ...(q && {
         OR: [
+          {id: {contains: q, mode: "insensitive"}},
           { name: { contains: q, mode: "insensitive" } },
           { code: { contains: q, mode: "insensitive" } },
         ],

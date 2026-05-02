@@ -4,6 +4,8 @@ export const SizeQueryResponse = {
   id: true,
   name: true,
   code: true,
+  createdAt: true,
+  updatedAt: true,
   _count: {
     select: {
       variants: true,

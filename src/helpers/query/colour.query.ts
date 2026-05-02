@@ -2,6 +2,7 @@ import { Prisma } from "../../generated/prisma/client.js";
 import { prisma } from "../../libs/prisma.js";
 import { ColourValidation } from "../../validations/colour.validation.js";
 import Validation from "../../validations/validation.js";
+import { Sort } from "../constants/sort.constant.js";
 import { ColourQueryResponse } from "../responses/colour.response.js";
 import {
   ColourQueryResponseType,
@@ -19,6 +20,7 @@ export const colourQuery = async (
     const where: Prisma.ColourWhereInput = {
       ...(q && {
         OR: [
+          { id: { contains: q, mode: "insensitive" } },
           { name: { contains: q, mode: "insensitive" } },
           { hexCode: { contains: q, mode: "insensitive" } },
         ],
@@ -28,6 +30,14 @@ export const colourQuery = async (
     let orderBy: Prisma.ColourOrderByWithRelationInput = {
       [sort]: order,
     };
+
+    if (sort === "variant") {
+      orderBy = {
+        variants: {
+          _count: order as any,
+        },
+      };
+    }
 
     const [items, totalItems, totalFilters] = await Promise.all([
       tx.colour.findMany({

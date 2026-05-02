@@ -7,6 +7,10 @@ export const ProductQueryResponse = {
   gender: true,
   slug: true,
   description: true,
+  createdAt: true,
+  updatedAt: true,
+  sold: true,
+  isActive: true,
   tags: {
     select: {
       id: true,
@@ -52,6 +56,8 @@ export const ProductGetResponse = {
   gender: true,
   slug: true,
   description: true,
+  sold: true,
+  isActive: true,
   variants: {
     select: {
       size: {
@@ -117,4 +123,9 @@ export const ProductPatchResponse = {
 
 export const ProductDeleteResponse = {
   id: true,
+} as const satisfies Prisma.ProductSelect;
+
+export const ProductUtilGetTotalStockResponse = {
+  id: true,
+  name: true,
 } as const satisfies Prisma.ProductSelect;

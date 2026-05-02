@@ -55,3 +55,9 @@ export class ProductValidation {
     deletedMedias: z.array(z.string()).optional(),
   });
 }
+
+export class ProductUtilValidation {
+  static GET_TOTAL_STOCK = z.object({
+    productId: z.string(),
+  });
+}

@@ -9,7 +9,7 @@ export class Sort {
     default: "createdAt",
   };
   static COLOUR = {
-    items: ["name", "createdAt", "updatedAt", "hexCode"],
+    items: ["name", "createdAt", "updatedAt", "hexCode", "variant"],
     default: "createdAt",
   };
   static SIZE = {

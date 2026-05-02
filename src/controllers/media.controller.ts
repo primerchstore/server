@@ -38,6 +38,22 @@ export class MediaController {
     }
   };
 
+  static POST_BULK = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const result: MediaPostResponseType[] = await MediaService.POST_BULK(
+        req.files as Express.Multer.File[],
+      );
+      const response = SuccessResponse.POST("media", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   static DELETE = async (
     req: UserRequest,
     res: Response,

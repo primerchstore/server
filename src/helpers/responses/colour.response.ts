@@ -4,6 +4,8 @@ export const ColourQueryResponse = {
   id: true,
   name: true,
   hexCode: true,
+  createdAt: true,
+  updatedAt: true,
   _count: {
     select: {
       variants: true,

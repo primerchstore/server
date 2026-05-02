@@ -1,6 +1,6 @@
 import { uploadToCloudinary } from "../helpers/cloudinary/upload.helper.js";
 import { mediaDelete } from "../helpers/delete/media.delete.js";
-import { mediaPost } from "../helpers/post/media.post.js";
+import { mediaPost, mediaPostBulk } from "../helpers/post/media.post.js";
 import { mediaQuery } from "../helpers/query/media.query.js";
 import {
   ErrorResponseMessage,
@@ -29,6 +29,20 @@ export class MediaService {
       );
     const upload = await uploadToCloudinary(file.buffer);
     return mediaPost(upload);
+  };
+
+  static POST_BULK = async (
+    files?: Express.Multer.File[],
+  ): Promise<MediaPostResponseType[]> => {
+    if (!files || files.length === 0) {
+      throw new ResponseError(
+        ErrorResponseMessage.BAD_REQUEST("no files provided"),
+      );
+    }
+    const uploadPromises = files.map((file) => uploadToCloudinary(file.buffer));
+    const uploadResults = await Promise.all(uploadPromises);
+
+    return mediaPostBulk(uploadResults);
   };
 
   static DELETE = async (

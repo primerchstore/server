@@ -17,3 +17,19 @@ export const mediaPost = async (
     });
   });
 };
+
+export const mediaPostBulk = async (
+  cloudinary: UploadApiResponse[],
+): Promise<MediaPostResponseType[]> => {
+  return prisma.$transaction(async (tx) => {
+    return tx.media.createManyAndReturn({
+      data: cloudinary.map((item) => ({
+        url: item.secure_url,
+        publicId: item.public_id,
+        type: "IMAGE",
+      })),
+      skipDuplicates: true,
+      select: MediaPostReponse,
+    });
+  });
+};
