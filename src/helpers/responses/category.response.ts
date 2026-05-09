@@ -5,6 +5,9 @@ export const CategoryQueryResponse = {
   name: true,
   slug: true,
   description: true,
+  parentId: true,
+  createdAt: true,
+  updatedAt: true,
   parent: {
     select: {
       id: true,
@@ -19,6 +22,17 @@ export const CategoryQueryResponse = {
       name: true,
       slug: true,
       description: true,
+    },
+  },
+  medias: {
+    select: {
+      id: true,
+      media: {
+        select: {
+          id: true,
+          url: true,
+        },
+      },
     },
   },
   _count: {

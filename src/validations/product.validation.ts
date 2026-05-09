@@ -13,6 +13,7 @@ export class ProductValidation {
       z.array(z.string().min(1)).optional(),
     ),
     page: z.coerce.number().int().min(1).default(1),
+    gender: z.enum(Gender).optional(),
     order: z.enum(order.items).default(order.default),
     take: z.coerce.number().int().min(1).default(10),
     sort: z.enum(Sort.PRODUCT.items).default(Sort.PRODUCT.default),

@@ -93,6 +93,7 @@ export class ProductController {
       const response = SuccessResponse.DELETE("product", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   };

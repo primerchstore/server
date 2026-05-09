@@ -2,6 +2,7 @@ import { NextFunction, Response } from "express";
 import { UserRequest } from "../helpers/types/user.type.js";
 import {
   MediaDeleteResponseType,
+  MediaGetResponseType,
   MediaPostResponseType,
   MediaQueryResponseType,
 } from "../helpers/types/media.type.js";
@@ -19,6 +20,23 @@ export class MediaController {
         req.query as any,
       );
       const response = SuccessResponse.QUERY("media", result);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  static GET = async (
+    req: UserRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const result: MediaGetResponseType = await MediaService.GET({
+        by: req.query.by as any,
+        value: req.query.value as any,
+      });
+      const response = SuccessResponse.GET("media", result);
       res.status(response.statusCode).json(response);
     } catch (error) {
       next(error);

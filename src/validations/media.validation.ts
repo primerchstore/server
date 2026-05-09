@@ -9,7 +9,11 @@ export class MediaValidation {
     sort: z.enum(Sort.MEDIA.items).default(Sort.MEDIA.default),
     order: z.enum(order.items).default(order.default),
   });
+  static GET = z.object({
+    by: z.enum(["id"]),
+    value: z.string(),
+  });
   static DELETE = z.object({
-    id: z.string()
-  })
+    id: z.string(),
+  });
 }

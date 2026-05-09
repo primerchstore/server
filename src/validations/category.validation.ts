@@ -46,6 +46,7 @@ export class CategoryValidation {
     parentId: z
       .string()
       .optional()
+      .nullable()
       .transform((val) => (val === "" ? undefined : val)),
     deletedMedias: z.array(z.string()).optional(),
     addedMedias: z.array(z.string()).optional(),

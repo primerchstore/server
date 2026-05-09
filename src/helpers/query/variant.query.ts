@@ -13,7 +13,8 @@ export const variantQuery = async (
 ): Promise<VariantQueryResponseType> => {
   return prisma.$transaction(async (tx) => {
     const validatedQuery = Validation.validate(VariantValidation.QUERY, query);
-    const { order, page, sort, take, colour, q, size, sku } = validatedQuery;
+    const { order, page, sort, take, colour, q, size, sku, productId } =
+      validatedQuery;
     const skip = (page - 1) * take;
 
     const where: Prisma.VariantWhereInput = {
@@ -24,6 +25,9 @@ export const variantQuery = async (
             mode: "insensitive",
           },
         },
+      }),
+      ...(productId && {
+        productId,
       }),
       ...(size && {
         size: {

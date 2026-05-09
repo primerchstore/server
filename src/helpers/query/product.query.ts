@@ -13,12 +13,14 @@ export const productQuery = async (
 ): Promise<ProductQueryResponseType> => {
   return prisma.$transaction(async (tx) => {
     const validatedQuery = Validation.validate(ProductValidation.QUERY, query);
-    const { order, page, sort, take, q, category, tags } = validatedQuery;
+    const { order, page, sort, take, q, category, tags, gender } =
+      validatedQuery;
 
     const skip = (page - 1) * take;
     const where: Prisma.ProductWhereInput = {
       ...(q && {
         OR: [
+          { id: { contains: q, mode: "insensitive" } },
           { name: { contains: q, mode: "insensitive" } },
           { description: { contains: q, mode: "insensitive" } },
         ],
@@ -28,6 +30,10 @@ export const productQuery = async (
         category: {
           slug: { contains: category, mode: "insensitive" },
         },
+      }),
+
+      ...(gender && {
+        gender,
       }),
 
       ...(tags &&

@@ -19,6 +19,7 @@ export const categoryQuery = async (
     const where: Prisma.CategoryWhereInput = {
       ...(q && {
         OR: [
+          { id: { contains: q, mode: "insensitive" } },
           { name: { contains: q, mode: "insensitive" } },
           { description: { contains: q, mode: "insensitive" } },
         ],

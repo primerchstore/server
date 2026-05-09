@@ -1,5 +1,6 @@
 import { uploadToCloudinary } from "../helpers/cloudinary/upload.helper.js";
 import { mediaDelete } from "../helpers/delete/media.delete.js";
+import { mediaGet } from "../helpers/get/media.get.js";
 import { mediaPost, mediaPostBulk } from "../helpers/post/media.post.js";
 import { mediaQuery } from "../helpers/query/media.query.js";
 import {
@@ -9,6 +10,8 @@ import {
 import {
   MediaDeleteResponseType,
   MediaDeleteValidationType,
+  MediaGetResponseType,
+  MediaGetValidationType,
   MediaPostResponseType,
   MediaQueryResponseType,
   MediaQueryValidationType,
@@ -19,6 +22,11 @@ export class MediaService {
     query: MediaQueryValidationType,
   ): Promise<MediaQueryResponseType> => {
     return mediaQuery(query);
+  };
+  static GET = async (
+    data: MediaGetValidationType,
+  ): Promise<MediaGetResponseType> => {
+    return mediaGet(data);
   };
   static POST = async (
     file?: Express.Multer.File,

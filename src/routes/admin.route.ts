@@ -40,6 +40,7 @@ adminRoutes.patch("/categories/:categoryId", CategoryController.PATCH);
 adminRoutes.delete("/categories/:categoryId", CategoryController.DELETE);
 
 adminRoutes.get("/medias/query", MediaController.QUERY);
+adminRoutes.get("/medias/get", MediaController.GET);
 adminRoutes.post("/medias", upload.single("image"), MediaController.POST);
 adminRoutes.post(
   "/medias/bulk",

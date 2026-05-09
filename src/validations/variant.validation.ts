@@ -8,6 +8,7 @@ export class VariantValidation {
     size: z.string().optional(),
     colour: z.string().optional(),
     sku: z.string().optional(),
+    productId: z.string().optional(),
     page: z.coerce.number().int().min(1).default(1),
     order: z.enum(order.items).default(order.default),
     take: z.coerce.number().int().min(1).default(10),

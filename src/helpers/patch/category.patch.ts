@@ -30,6 +30,16 @@ export const categoryPatch = async (
     if (validatedData.name === category.name) validatedData.name = undefined;
     if (validatedData.description === category.description)
       validatedData.description = undefined;
+
+    if (validatedData.parentId) {
+      const parentExist = await tx.category.findUnique({
+        where: { id: validatedData.parentId },
+        select: { id: true },
+      });
+      if (!parentExist)
+        throw new ResponseError(ErrorResponseMessage.NOT_FOUND("category"));
+    }
+
     if (validatedData.parentId === category.parentId)
       validatedData.parentId = undefined;
 
